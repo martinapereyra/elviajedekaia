@@ -4,100 +4,100 @@
 //el Reinicio no cambia de color 
 
 
-var canvas;
-var ctx;
-var fuente = new FontFace('Nothing', "url(fonts/Nothing.ttf) format('truetype')");
+let canvas;
+let ctx;
+let fuente = new FontFace('Nothing', "url(fonts/Nothing.ttf) format('truetype')");
 document.fonts.add(fuente);
 fuente.load().then(dibujar);
 
 //agrego una variable para saber si el juego está inciado o no
-var inicio=false;
+let inicio=false;
 
 //VARIABLES PARA PLACAS
 
-var reglamento=false;
+let reglamento=false;
 
-var placaFinalTriste=false;
-var placaFinalFeliz=false;
-var placaJaula=false;
-var placaFinalbasura=false;
+let placaFinalTriste=false;
+let placaFinalFeliz=false;
+let placaJaula=false;
+let placaFinalbasura=false;
 
 /*Variables para color de botón*/
-var colorBoton="#000";
+let colorBoton="#000";
 
 // Variables para IMÁGENES
 
-var imgKaia;
-var imgBotella;
-var imgPapitas;
-var imgLata;
-var imgJaula;
-var imgLemmini;
-var imgMadriguera;
+let imgKaia;
+let imgBotella;
+let imgPapitas;
+let imgLata;
+let imgJaula;
+let imgLemmini;
+let imgMadriguera;
 
 // Variables para IMÁGENES FIJAS
 
-var imgBrush;
-var imgLemmingContador;
-var imgCorazonLleno;
-var imgCorazonVacio;
+let imgBrush;
+let imgLemmingContador;
+let imgCorazonLleno;
+let imgCorazonVacio;
 
 // Variables para el JUEGO
 
-var puntosLemming=0;
-var vidas=3;
-var teclaSalto=false;
-var teclaSuperSalto=false;
-var tiempoJuego;
+let puntosLemming=0;
+let vidas=3;
+let teclaSalto=false;
+let teclaSuperSalto=false;
+let tiempoJuego;
 
 //variables array de obstáculos y lemmings
 
-var posicionesX=[900,950,1000,1050,1100,1200,1300,1400,1500,1600,1700,1800,2000];
-var cintaCaminadora;
+let posicionesX=[900,950,1000,1050,1100,1200,1300,1400,1500,1600,1700,1800,2000];
+let cintaCaminadora;
 
 //VARIABLES PARA MOVIMIENTO DE KAIA
-var contador=0;
-var segundos=0;
-var intervaloKaia=0;
+let contador=0;
+let segundos=0;
+let intervaloKaia=0;
 
 /*VARIABLES PARA AUDIOS*/
-var audioFinalTriste;
-var audioLemming;
-var audioPerder;
-var audioInicial;
-var audioFinalFeliz;
-var audioChoque;
-var audioJaula;
-var audioInstrucciones;
+let audioFinalTriste;
+let audioLemming;
+let audioPerder;
+let audioInicial;
+let audioFinalFeliz;
+let audioChoque;
+let audioJaula;
+let audioInstrucciones;
 
 
 // Variables para el FONDO
 
-var posicionFondo=0;
+let posicionFondo=0;
 
 //var imgPisoDos;
 //var pisoDos= new Piso(800,375);
 
 // Variables para OBJETOS
 
-var kaia= new Personaje(90,298,153,80);
+let kaia= new Personaje(90,298,153,80);
 
-var brush= new Imgfijas (-3,10);
-var lemmingContador= new Imgfijas (35,27);
-var corazonLleno1= new Imgfijas(670,27);
-var corazonLleno2= new Imgfijas(710,27);
-var corazonLleno3= new Imgfijas(750,27);
+let brush= new Imgfijas (-3,10);
+let lemmingContador= new Imgfijas (35,27);
+let corazonLleno1= new Imgfijas(670,27);
+let corazonLleno2= new Imgfijas(710,27);
+let corazonLleno3= new Imgfijas(750,27);
 
-var corazonVacio1=new Imgfijas(670,27);
-var corazonVacio2=new Imgfijas(710,27);
-var corazonVacio3=new Imgfijas(750,27);
+let corazonVacio1=new Imgfijas(670,27);
+let corazonVacio2=new Imgfijas(710,27);
+let corazonVacio3=new Imgfijas(750,27);
 
-var botella=new Obstaculo(1200,360,"botella",41,15);
-var lata=new Obstaculo(900,360,"lata",22,13);
-var papitas=new Obstaculo(700,353,"papitas",45,23);
-var jaula=new Obstaculo(2500,260,"jaula",111,115);
-var lemmini=new Obstaculo(500,360,"lemmini",35,15);
-var madriguera=new Obstaculo(14000,265,"madriguera",397,113);
+let botella=new Obstaculo(1200,360,"botella",41,15);
+let lata=new Obstaculo(900,360,"lata",22,13);
+let papitas=new Obstaculo(700,353,"papitas",45,23);
+let jaula=new Obstaculo(2500,260,"jaula",111,115);
+let lemmini=new Obstaculo(500,360,"lemmini",35,15);
+let madriguera=new Obstaculo(14000,265,"madriguera",397,113);
 
 /////////// FUNCIÓN DIBUJAR
 
